@@ -16,6 +16,8 @@ const topicSchema = new Schema({
   topicPic: String,
   recommend: String,
   priority: Number
+}, {
+  _id: false
 })
 
 topicSchema.statics.sortByPriority = function(topics, cb) {

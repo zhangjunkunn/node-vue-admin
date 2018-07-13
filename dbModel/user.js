@@ -17,6 +17,8 @@ const adminSchema = new Schema({
   token: String,
   introduction: String,
   create_time: String,
+}, {
+  _id: false
 })
 
 adminSchema.index({

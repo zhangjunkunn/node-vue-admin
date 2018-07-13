@@ -12,6 +12,8 @@ const bannerSchema = new schema({
   jumpType: String,
   jump: String,
   createTime: String
+}, {
+  _id: false
 })
 
 const Banner = mongoose.model('Banner', bannerSchema, 'banner')
