@@ -9,7 +9,8 @@ async function findTopicList(req, res, next) {
     tid: 1,
     topicName: 1,
     backgroundUrl: 1,
-    topicPic: 1
+    topicPic: 1,
+    _id: 0
   })
   console.log(TopicList)
   if(!TopicList) {

@@ -49,6 +49,7 @@ async function insertBanner(req, res, next) {
           detail: '添加成功'
         })
       }).catch(err => {
+        console.log(err)
         res.send({
           stateCode: 0, 
           retMsg: 'fail',
@@ -59,7 +60,37 @@ async function insertBanner(req, res, next) {
   })
 }
 
+async function deleteBanner(req, res, next) {
+  const form = formidable.IncomingForm()
+  form.parse(req, (err, fields, files) => {
+    if(err) {
+      res.send({
+        stateCode: 0,
+        retMsg: 'error',
+        detail: '表单错误'
+      })
+      return
+    }
+    const {bid} = fields
+    Banner.findOneAndRemove({bid}).then(() => {
+      console.log('delete banner success')
+      res.send({
+        stateCode: 1,
+        retMsg: 'success',
+        detail: '删除成功'
+      })
+    }).catch(() => {
+      res.send({
+        stateCode: 0,
+        retMsg: 'fail',
+        detail: '删除失败，稍后再试'
+      })
+    })
+  })
+}
+
 export {
   insertBanner,
-  findBannerList
+  findBannerList,
+  deleteBanner
 }

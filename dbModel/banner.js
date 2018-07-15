@@ -6,14 +6,12 @@ let count = 1
 const bannerSchema = new schema({
   bid: {
     type: Number,
-    default: count ++
+    default: () => count ++
   },
   pic: String,
   jumpType: String,
   jump: String,
   createTime: String
-}, {
-  _id: false
 })
 
 const Banner = mongoose.model('Banner', bannerSchema, 'banner')
